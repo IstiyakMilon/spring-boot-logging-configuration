@@ -16,17 +16,19 @@ public class TestController {
 
 
     @GetMapping("/test-logging")
-    public void testLogging(@RequestAttribute(value = CORRELATION_ID_HEADER, required = false) String correlationId) {
+    public void testLogging(
+//            @RequestAttribute(value = CORRELATION_ID_HEADER, required = false) String correlationId
+    ) {
 
-        if (correlationId == null || correlationId.isEmpty()) {
+        /*if (correlationId == null || correlationId.isEmpty()) {
             correlationId = UUID.randomUUID().toString();
             String id = MDC.get(CORRELATION_ID_HEADER);
             MDC.put(CORRELATION_ID_HEADER, correlationId);
-        }
-        log.info("Debug logging test for correaltion Id: " + correlationId);
-        log.info("Info test for correaltion Id: " + correlationId);
-        log.info("Warning test for correaltion Id: " + correlationId);
-        log.info("Error test for correaltion Id: " + correlationId);
+        }*/
+        log.info("Debug logging test for correaltion Id: " + MDC.get(CORRELATION_ID_HEADER));
+        log.info("Info test for correaltion Id: " + MDC.get(CORRELATION_ID_HEADER));
+        log.info("Warning test for correaltion Id: " + MDC.get(CORRELATION_ID_HEADER));
+        log.info("Error test for correaltion Id: " + MDC.get(CORRELATION_ID_HEADER));
 
 
     }
